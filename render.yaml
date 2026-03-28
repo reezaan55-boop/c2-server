@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: c2-server
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn c2_server:app
